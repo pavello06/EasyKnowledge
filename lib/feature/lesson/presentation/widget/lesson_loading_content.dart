@@ -55,7 +55,7 @@ class LessonLoadingContent extends StatelessWidget {
               ),
             ),
             separatorBuilder: (_, _) => const SizedBox(height: 8.0),
-            itemCount: 5,
+            itemCount: 10,
           ),
 
           const SliverToBoxAdapter(child: SizedBox(height: 8.0)),

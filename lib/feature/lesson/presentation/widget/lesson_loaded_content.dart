@@ -81,30 +81,26 @@ class _LessonLoadedContentState extends State<LessonLoadedContent> {
                   element.content,
                   style: T.bodyMedium(context),
                 ),
-                LessonElementType.image => ClipRRect(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: EasyCachedNetworkImage(
-                        element.content,
-                        width: double.infinity,
-                        height: 200.0,
-                      ),
+                LessonElementType.image => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: EasyCachedNetworkImage(
+                      element.content,
+                      width: double.infinity,
+                      height: 200.0,
                     ),
                   ),
                 ),
-                LessonElementType.video => ClipRRect(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 200.0,
-                        child: FlickVideoPlayer(
-                          flickManager: _managers[index]!,
-                        ),
+                LessonElementType.video => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 200.0,
+                      child: FlickVideoPlayer(
+                        flickManager: _managers[index]!,
                       ),
                     ),
                   ),

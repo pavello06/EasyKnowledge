@@ -10,13 +10,16 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LessonPage extends StatefulWidget {
-  const LessonPage({super.key});
+  const LessonPage({super.key, required this.currentRoute});
+
+  final String currentRoute;
 
   static const route = '/lessons/:lessonId';
 
   static String routeWithId(String id) => route.replaceFirst(':lessonId', id);
 
-  static String fullRoute({required String id}) => routeWithId(id);
+  static String fullRoute({required String parent, required String id}) =>
+      '$parent${routeWithId(id)}';
 
   @override
   State<LessonPage> createState() => _LessonPageState();
