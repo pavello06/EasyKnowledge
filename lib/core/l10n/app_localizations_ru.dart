@@ -7,4 +7,19 @@ import 'app_localizations.dart';
 /// The translations for Russian (`ru`).
 class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
+
+  @override
+  String get easyErrorContentRetry => 'Повторить';
+
+  @override
+  String get easyNetworkFailure => 'Нет подключения к интернету';
+
+  @override
+  String get easyServerFailure => 'Произошла ошибка на сервере';
+
+  @override
+  String get easyCacheFailure => 'Произошла ошибка с кэшем';
+
+  @override
+  String get easyUnknownFailure => 'Произошла неизвестная ошибка';
 }

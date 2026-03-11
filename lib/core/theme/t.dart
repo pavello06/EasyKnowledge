@@ -8,7 +8,7 @@ abstract class T {
       Theme.of(context).colorScheme.secondary;
 
   static Color tertiary(BuildContext context) =>
-      Theme.of(context).colorScheme.secondary;
+      Theme.of(context).colorScheme.tertiary;
 
   static TextStyle headlineLarge(BuildContext context) =>
       Theme.of(context).textTheme.headlineLarge!;

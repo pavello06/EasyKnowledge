@@ -1,1 +1,8 @@
-{}
+{
+    "easyErrorContentRetry": "Повторить",
+
+    "easyNetworkFailure": "Нет подключения к интернету",
+    "easyServerFailure": "Произошла ошибка на сервере",
+    "easyCacheFailure": "Произошла ошибка с кэшем",
+    "easyUnknownFailure": "Произошла неизвестная ошибка"
+}

@@ -93,6 +93,36 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('ru')];
+
+  /// No description provided for @easyErrorContentRetry.
+  ///
+  /// In ru, this message translates to:
+  /// **'Повторить'**
+  String get easyErrorContentRetry;
+
+  /// No description provided for @easyNetworkFailure.
+  ///
+  /// In ru, this message translates to:
+  /// **'Нет подключения к интернету'**
+  String get easyNetworkFailure;
+
+  /// No description provided for @easyServerFailure.
+  ///
+  /// In ru, this message translates to:
+  /// **'Произошла ошибка на сервере'**
+  String get easyServerFailure;
+
+  /// No description provided for @easyCacheFailure.
+  ///
+  /// In ru, this message translates to:
+  /// **'Произошла ошибка с кэшем'**
+  String get easyCacheFailure;
+
+  /// No description provided for @easyUnknownFailure.
+  ///
+  /// In ru, this message translates to:
+  /// **'Произошла неизвестная ошибка'**
+  String get easyUnknownFailure;
 }
 
 class _AppLocalizationsDelegate
