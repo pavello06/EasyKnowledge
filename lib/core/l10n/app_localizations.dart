@@ -123,6 +123,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Произошла неизвестная ошибка'**
   String get easyUnknownFailure;
+
+  /// No description provided for @courseLoadedContentPublishedAt.
+  ///
+  /// In ru, this message translates to:
+  /// **'Опубликовано {date}'**
+  String courseLoadedContentPublishedAt(Object date);
+
+  /// No description provided for @courseLoadedContentDuration.
+  ///
+  /// In ru, this message translates to:
+  /// **'Продолжительность {duration} минут'**
+  String courseLoadedContentDuration(Object duration);
+
+  /// No description provided for @courseLoadedContentLessonsCount.
+  ///
+  /// In ru, this message translates to:
+  /// **'Всего {count, plural, one{1 урок} few{{count} урока} other{{count} уроков}}'**
+  String courseLoadedContentLessonsCount(num count);
 }
 
 class _AppLocalizationsDelegate

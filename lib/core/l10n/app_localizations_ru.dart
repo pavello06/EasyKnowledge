@@ -22,4 +22,26 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get easyUnknownFailure => 'Произошла неизвестная ошибка';
+
+  @override
+  String courseLoadedContentPublishedAt(Object date) {
+    return 'Опубликовано $date';
+  }
+
+  @override
+  String courseLoadedContentDuration(Object duration) {
+    return 'Продолжительность $duration минут';
+  }
+
+  @override
+  String courseLoadedContentLessonsCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count уроков',
+      few: '$count урока',
+      one: '1 урок',
+    );
+    return 'Всего $_temp0';
+  }
 }

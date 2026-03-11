@@ -4,5 +4,10 @@
     "easyNetworkFailure": "Нет подключения к интернету",
     "easyServerFailure": "Произошла ошибка на сервере",
     "easyCacheFailure": "Произошла ошибка с кэшем",
-    "easyUnknownFailure": "Произошла неизвестная ошибка"
+    "easyUnknownFailure": "Произошла неизвестная ошибка",
+
+
+    "courseLoadedContentPublishedAt": "Опубликовано {date}",
+    "courseLoadedContentDuration": "Продолжительность {duration} минут",
+    "courseLoadedContentLessonsCount": "Всего {count, plural, one{1 урок} few{{count} урока} other{{count} уроков}}"
 }
