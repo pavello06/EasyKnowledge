@@ -12,28 +12,38 @@ class LessonRepositoryImpl implements LessonRepository {
     return Right(
       Lesson(
         id: '0',
-        courseId: '0',
         coverUrl:
             'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
         name: 'Lesson1',
         elements: [
-          LessonElement(type: LessonElementType.text, content: 'Lorem ipsum.'),
+          LessonElement(
+            id: '0',
+            type: LessonElementType.text,
+            content: 'Lorem ipsum.',
+          ),
 
           LessonElement(
+            id: '1',
             type: LessonElementType.image,
             content:
                 'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
           ),
 
-          LessonElement(type: LessonElementType.text, content: 'Lorem ipsum.'),
+          LessonElement(
+            id: '2',
+            type: LessonElementType.text,
+            content: 'Lorem ipsum.',
+          ),
 
           LessonElement(
+            id: '3',
             type: LessonElementType.image,
             content:
                 'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
           ),
 
           LessonElement(
+            id: '4',
             type: LessonElementType.video,
             content:
                 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
