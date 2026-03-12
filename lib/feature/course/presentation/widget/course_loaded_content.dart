@@ -56,14 +56,17 @@ class _CourseLoadedContentState extends State<CourseLoadedContent> {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(16.0),
-              ),
-              child: EasyCachedNetworkImage(
-                _course.coverUrl,
-                width: double.infinity,
-                height: 250.0,
+            child: Hero(
+              tag: 'course-${_course.id}',
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(16.0),
+                ),
+                child: EasyCachedNetworkImage(
+                  _course.coverUrl,
+                  width: double.infinity,
+                  height: 250.0,
+                ),
               ),
             ),
           ),

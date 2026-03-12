@@ -8,7 +8,6 @@ import 'package:easy_knowledge/feature/lesson/domain/repository/lesson_repositor
 class LessonRepositoryImpl implements LessonRepository {
   @override
   Future<Either<Failure, Lesson>> getLesson(String id) async {
-    await Future.delayed(const Duration(seconds: 4));
     return Right(
       Lesson(
         id: '0',

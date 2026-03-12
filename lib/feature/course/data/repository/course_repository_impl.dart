@@ -9,9 +9,9 @@ import 'package:easy_knowledge/feature/lesson/domain/entity/lesson_element.dart'
 class CourseRepositoryImpl implements CourseRepository {
   @override
   Future<Either<Failure, Course>> getCourse(String id) async {
-    await Future.delayed(const Duration(seconds: 4));
     return Right(
       Course(
+        id: '0',
         coverUrl:
             'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
         name: 'Course1',

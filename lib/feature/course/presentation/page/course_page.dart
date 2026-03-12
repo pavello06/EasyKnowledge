@@ -10,9 +10,10 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CoursePage extends StatefulWidget {
-  const CoursePage({super.key, required this.currentRoute});
+  const CoursePage({super.key, required this.currentRoute, required this.id});
 
   final String currentRoute;
+  final String id;
 
   static const route = '/courses/:courseId';
 
@@ -40,9 +41,9 @@ class _CoursePageState extends State<CoursePage> {
                 context.read<CourseCubit>().getCourse();
               });
 
-              return const SizedBox.shrink();
+              return CourseLoadingContent(id: widget.id,);
             } else if (state is CourseLoading) {
-              return const CourseLoadingContent();
+              return CourseLoadingContent(id: widget.id,);
             } else if (state is CourseLoaded) {
               return CourseLoadedContent(
                 route: widget.currentRoute,

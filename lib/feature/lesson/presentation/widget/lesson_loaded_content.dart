@@ -16,14 +16,16 @@ class LessonLoadedContent extends StatefulWidget {
 }
 
 class _LessonLoadedContentState extends State<LessonLoadedContent> {
+  late final Lesson _lesson;
   final _managers = <int, FlickManager>{};
 
   @override
   void initState() {
     super.initState();
 
-    for (int i = 0; i < widget.lesson.elements.length; i++) {
-      final element = widget.lesson.elements[i];
+    _lesson = widget.lesson;
+    for (int i = 0; i < _lesson.elements.length; i++) {
+      final element = _lesson.elements[i];
 
       if (element.type == LessonElementType.video) {
         _managers[i] = FlickManager(
@@ -52,14 +54,17 @@ class _LessonLoadedContentState extends State<LessonLoadedContent> {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(16.0),
-              ),
-              child: EasyCachedNetworkImage(
-                widget.lesson.coverUrl,
-                width: double.infinity,
-                height: 250.0,
+            child: Hero(
+              tag: 'lesson-${_lesson.id}',
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(16.0),
+                ),
+                child: EasyCachedNetworkImage(
+                  _lesson.coverUrl,
+                  width: double.infinity,
+                  height: 250.0,
+                ),
               ),
             ),
           ),
@@ -67,14 +72,14 @@ class _LessonLoadedContentState extends State<LessonLoadedContent> {
           const SliverToBoxAdapter(child: SizedBox(height: 16.0)),
 
           SliverToBoxAdapter(
-            child: Text(widget.lesson.name, style: T.titleLarge(context)),
+            child: Text(_lesson.name, style: T.titleLarge(context)),
           ),
 
           const SliverToBoxAdapter(child: SizedBox(height: 8.0)),
 
           SliverList.separated(
             itemBuilder: (_, index) {
-              final element = widget.lesson.elements[index];
+              final element = _lesson.elements[index];
 
               return switch (element.type) {
                 LessonElementType.text => Text(
@@ -108,7 +113,7 @@ class _LessonLoadedContentState extends State<LessonLoadedContent> {
               };
             },
             separatorBuilder: (_, _) => const SizedBox(height: 8.0),
-            itemCount: widget.lesson.elements.length,
+            itemCount: _lesson.elements.length,
           ),
 
           const SliverToBoxAdapter(child: SizedBox(height: 8.0)),

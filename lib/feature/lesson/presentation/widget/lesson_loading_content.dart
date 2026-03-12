@@ -3,25 +3,31 @@ import 'package:easy_knowledge/core/theme/t.dart';
 import 'package:flutter/material.dart';
 
 class LessonLoadingContent extends StatelessWidget {
-  const LessonLoadingContent({super.key});
+  const LessonLoadingContent({super.key, required this.id});
+
+  final String id;
 
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
       child: CustomScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
-            child: EasyShimmer(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: T.tertiary(context),
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(16.0),
+            child: Hero(
+              tag: 'lesson-$id',
+              child: EasyShimmer(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: T.tertiary(context),
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(16.0),
+                    ),
                   ),
+                  width: double.infinity,
+                  height: 250.0,
                 ),
-                width: double.infinity,
-                height: 250.0,
               ),
             ),
           ),

@@ -31,12 +31,15 @@ class CourseLessonCard extends StatelessWidget {
         child: Row(
           spacing: 8.0,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16.0),
-              child: EasyCachedNetworkImage(
-                lesson.coverUrl,
-                width: 64.0,
-                height: 64.0,
+            Hero(
+              tag: 'lesson-${lesson.id}',
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16.0),
+                child: EasyCachedNetworkImage(
+                  lesson.coverUrl,
+                  width: 64.0,
+                  height: 64.0,
+                ),
               ),
             ),
 
