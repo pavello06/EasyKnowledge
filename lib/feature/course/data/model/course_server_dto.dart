@@ -36,7 +36,7 @@ class CourseServerDto {
         author: json['author'] as dynamic,
         coverUrl: json['coverUrl'] as String,
         name: json['name'] as String,
-        topics: json['topics'] as List<String>,
+        topics: List<String>.from(json['topics']),
         rating: (json['rating'] as num).toDouble(),
         publishedAt: json['publishedAt'] as Timestamp,
         updatedAt: json['updatedAt'] as Timestamp,

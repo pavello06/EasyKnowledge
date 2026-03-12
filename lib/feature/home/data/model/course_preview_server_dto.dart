@@ -18,7 +18,7 @@ class CoursePreviewServerDto {
       id: json['id'] as String?,
       coverUrl: json['coverUrl'] as String,
       name: json['name'] as String,
-      topics: json['topics'] as List<String>,
+      topics: List<String>.from(json['topics']),
       rating: json['rating'] as double,
     );
   }
