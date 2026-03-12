@@ -1,4 +1,5 @@
 import 'package:easy_knowledge/feature/course/domain/entity/lesson_preview.dart';
+import 'package:easy_knowledge/feature/course/domain/entity/topic.dart';
 import 'package:equatable/equatable.dart';
 
 class Course extends Equatable {
@@ -21,7 +22,7 @@ class Course extends Equatable {
   final dynamic author;
   final String coverUrl;
   final String name;
-  final List<String> topics;
+  final List<Topic> topics;
   final double rating;
   final DateTime publishedAt;
   final DateTime updatedAt;
