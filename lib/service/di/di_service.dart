@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_knowledge/feature/course/data/repository/course_repository_impl.dart';
 import 'package:easy_knowledge/feature/course/domain/repository/course_repository.dart';
 import 'package:easy_knowledge/feature/course/domain/usecase/get_course.dart';
@@ -17,6 +18,7 @@ abstract class DIService {
 
   static Future<void> init() async {
     // Utils
+    getIt.registerLazySingleton(() => FirebaseFirestore.instance);
 
     // Home
     // Data sources
