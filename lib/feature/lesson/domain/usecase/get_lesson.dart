@@ -8,7 +8,7 @@ class GetLesson {
 
   final LessonRepository _repository;
 
-  Future<Either<Failure, Lesson>> call(String id) {
-    return _repository.getLesson(id);
+  Future<Either<Failure, Lesson>> call(String courseId, String id) {
+    return _repository.getLesson(courseId, id);
   }
 }

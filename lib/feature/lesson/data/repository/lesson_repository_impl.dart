@@ -1,54 +1,28 @@
 import 'package:dartz/dartz.dart';
 import 'package:easy_knowledge/core/error/failure.dart';
-import 'package:easy_knowledge/feature/lesson/config/enum/lesson_element_type.dart';
+import 'package:easy_knowledge/core/network/network_checker.dart';
+import 'package:easy_knowledge/core/safecall/safe_data_source_call.dart';
+import 'package:easy_knowledge/feature/lesson/data/datasource/lesson_remote_data_source.dart';
+import 'package:easy_knowledge/feature/lesson/data/mapper/lesson_mapper.dart';
 import 'package:easy_knowledge/feature/lesson/domain/entity/lesson.dart';
-import 'package:easy_knowledge/feature/lesson/domain/entity/lesson_element.dart';
 import 'package:easy_knowledge/feature/lesson/domain/repository/lesson_repository.dart';
 
 class LessonRepositoryImpl implements LessonRepository {
+  LessonRepositoryImpl({required this._networkChecker, required this._remoteDataSource});
+
+  final NetworkChecker _networkChecker;
+  final LessonRemoteDataSource _remoteDataSource;
+
   @override
-  Future<Either<Failure, Lesson>> getLesson(String id) async {
-    return Right(
-      Lesson(
-        id: '0',
-        coverUrl:
-            'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
-        name: 'Lesson1',
-        elements: [
-          LessonElement(
-            id: '0',
-            type: LessonElementType.text,
-            content: 'Lorem ipsum.',
-          ),
+  Future<Either<Failure, Lesson>> getLesson(String courseId, String id) async {
+    final lessonOrFailure = await safeRemoteDataSourceCall(_networkChecker, () async {
+      final lessonDto = await _remoteDataSource.getLesson(courseId, id);
 
-          LessonElement(
-            id: '1',
-            type: LessonElementType.image,
-            content:
-                'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
-          ),
+      final lesson = LessonMapper.fromServer(lessonDto);
 
-          LessonElement(
-            id: '2',
-            type: LessonElementType.text,
-            content: 'Lorem ipsum.',
-          ),
+      return lesson;
+    });
 
-          LessonElement(
-            id: '3',
-            type: LessonElementType.image,
-            content:
-                'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
-          ),
-
-          LessonElement(
-            id: '4',
-            type: LessonElementType.video,
-            content:
-                'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-          ),
-        ],
-      ),
-    );
+    return lessonOrFailure;
   }
 }

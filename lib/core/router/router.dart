@@ -23,7 +23,7 @@ final router = GoRouter(
           path: CoursePage.route,
           builder: (context, state) {
             final id = state.pathParameters['courseId'] ?? '';
-            final currentRoute = state.path!;
+            final currentRoute = state.uri.path;
 
             return BlocProvider<CourseCubit>.value(
               value: DIService.getIt(param1: id),
@@ -34,11 +34,12 @@ final router = GoRouter(
             GoRoute(
               path: LessonPage.route,
               builder: (context, state) {
+                final courseId = state.pathParameters['courseId'] ?? '';
                 final id = state.pathParameters['lessonId'] ?? '';
                 final currentRoute = state.path!;
 
                 return BlocProvider<LessonCubit>.value(
-                  value: DIService.getIt(param1: id),
+                  value: DIService.getIt(param1: courseId, param2: id),
                   child: LessonPage(currentRoute: currentRoute, id: id),
                 );
               },

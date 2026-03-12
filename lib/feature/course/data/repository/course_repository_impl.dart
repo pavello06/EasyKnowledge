@@ -1,41 +1,34 @@
 import 'package:dartz/dartz.dart';
 import 'package:easy_knowledge/core/error/failure.dart';
+import 'package:easy_knowledge/core/network/network_checker.dart';
+import 'package:easy_knowledge/core/safecall/safe_data_source_call.dart';
+import 'package:easy_knowledge/feature/course/data/datasource/course_remote_data_source.dart';
+import 'package:easy_knowledge/feature/course/data/mapper/course_mapper.dart';
 import 'package:easy_knowledge/feature/course/domain/entity/course.dart';
-import 'package:easy_knowledge/feature/course/domain/entity/lesson_preview.dart';
 import 'package:easy_knowledge/feature/course/domain/repository/course_repository.dart';
-import 'package:easy_knowledge/feature/lesson/config/enum/lesson_element_type.dart';
-import 'package:easy_knowledge/feature/lesson/domain/entity/lesson_element.dart';
 
 class CourseRepositoryImpl implements CourseRepository {
+  CourseRepositoryImpl({
+    required this._networkChecker,
+    required this._remoteDataSource,
+  });
+
+  final NetworkChecker _networkChecker;
+  final CourseRemoteDataSource _remoteDataSource;
+
   @override
   Future<Either<Failure, Course>> getCourse(String id) async {
-    return Right(
-      Course(
-        id: '0',
-        coverUrl:
-            'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
-        name: 'Course1',
-        topics: ['#topic1', '#topic2', '#topic3'],
-        rating: 4.3,
-        publishedAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-        duration: 0,
-        introUrl:
-            'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-        description: 'Lorem ipsum.',
-        lessons: [
-          LessonPreview(
-            id: '0',
-            coverUrl:
-                'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
-            name: 'Lesson1',
-            firstTextElement: LessonElement(
-              type: LessonElementType.text,
-              content: 'Lorem ipsum.',
-            ),
-          ),
-        ],
-      ),
+    final courseOrFailure = await safeRemoteDataSourceCall(
+      _networkChecker,
+      () async {
+        final courseDto = await _remoteDataSource.getCourse(id);
+
+        final course = CourseMapper.fromServer(courseDto);
+
+        return course;
+      },
     );
+
+    return courseOrFailure;
   }
 }

@@ -3,16 +3,20 @@ import 'package:easy_knowledge/feature/lesson/presentation/bloc/lesson_state.dar
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LessonCubit extends Cubit<LessonState> {
-  LessonCubit({required this._id, required this._getLesson})
-    : super(LessonInitial());
+  LessonCubit({
+    required this._courseId,
+    required this._id,
+    required this._getLesson,
+  }) : super(LessonInitial());
 
+  final String _courseId;
   final String _id;
   final GetLesson _getLesson;
 
   Future<void> getLesson() async {
     emit(LessonLoading());
 
-    final lessonOrFailure = await _getLesson(_id);
+    final lessonOrFailure = await _getLesson(_courseId, _id);
 
     lessonOrFailure.fold(
       (failure) => emit(LessonError(failure: failure)),
