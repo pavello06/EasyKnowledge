@@ -1,5 +1,7 @@
 import 'package:easy_knowledge/feature/course/presentation/bloc/course_cubit.dart';
 import 'package:easy_knowledge/feature/course/presentation/page/course_page.dart';
+import 'package:easy_knowledge/feature/home/presentation/bloc/home_cubit.dart';
+import 'package:easy_knowledge/feature/home/presentation/page/home_page.dart';
 import 'package:easy_knowledge/feature/lesson/presentation/bloc/lesson_cubit.dart';
 import 'package:easy_knowledge/feature/lesson/presentation/page/lesson_page.dart';
 import 'package:easy_knowledge/service/di/get_it.dart';
@@ -9,31 +11,42 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   routes: [
     GoRoute(
-      path: CoursePage.route,
+      path: HomePage.route,
       builder: (context, state) {
-        final id = state.pathParameters['courseId'] ?? '';
-        final currentRoute = state.path!;
-
-        return BlocProvider<CourseCubit>.value(
-          value: DI.getIt(param1: id),
-          child: CoursePage(currentRoute: currentRoute),
+        return BlocProvider<HomeCubit>.value(
+          value: DI.getIt(),
+          child: const HomePage(),
         );
       },
       routes: [
         GoRoute(
-          path: LessonPage.route,
+          path: CoursePage.route,
           builder: (context, state) {
-            final id = state.pathParameters['lessonId'] ?? '';
+            final id = state.pathParameters['courseId'] ?? '';
             final currentRoute = state.path!;
 
-            return BlocProvider<LessonCubit>.value(
+            return BlocProvider<CourseCubit>.value(
               value: DI.getIt(param1: id),
-              child: LessonPage(currentRoute: currentRoute),
+              child: CoursePage(currentRoute: currentRoute, id: id),
             );
           },
+          routes: [
+            GoRoute(
+              path: LessonPage.route,
+              builder: (context, state) {
+                final id = state.pathParameters['lessonId'] ?? '';
+                final currentRoute = state.path!;
+
+                return BlocProvider<LessonCubit>.value(
+                  value: DI.getIt(param1: id),
+                  child: LessonPage(currentRoute: currentRoute, id: id),
+                );
+              },
+            ),
+          ],
         ),
       ],
     ),
   ],
-  initialLocation: CoursePage.fullRoute(parent: '', id: '0'),
+  initialLocation: HomePage.fullRoute(),
 );

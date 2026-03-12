@@ -2,6 +2,10 @@ import 'package:easy_knowledge/feature/course/data/repository/course_repository_
 import 'package:easy_knowledge/feature/course/domain/repository/course_repository.dart';
 import 'package:easy_knowledge/feature/course/domain/usecase/get_course.dart';
 import 'package:easy_knowledge/feature/course/presentation/bloc/course_cubit.dart';
+import 'package:easy_knowledge/feature/home/data/repository/home_repository_impl.dart';
+import 'package:easy_knowledge/feature/home/domain/repository/home_repository.dart';
+import 'package:easy_knowledge/feature/home/domain/usecase/get_course_list.dart';
+import 'package:easy_knowledge/feature/home/presentation/bloc/home_cubit.dart';
 import 'package:easy_knowledge/feature/lesson/data/repository/lesson_repository_impl.dart';
 import 'package:easy_knowledge/feature/lesson/domain/repository/lesson_repository.dart';
 import 'package:easy_knowledge/feature/lesson/domain/usecase/get_lesson.dart';
@@ -14,7 +18,21 @@ abstract class DI {
   static Future<void> init() async {
     // Utils
 
-    //Course
+    // Home
+    // Data sources
+
+    // Repositories
+    getIt.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl());
+
+    // Use cases
+    getIt.registerLazySingleton(() => GetCourseList(repository: getIt()));
+
+    // BLoC
+    getIt.registerLazySingleton<HomeCubit>(
+      () => HomeCubit(getCourseList: getIt()),
+    );
+
+    // Course
     // Data sources
 
     // Repositories

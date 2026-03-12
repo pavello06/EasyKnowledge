@@ -9,7 +9,7 @@ class EasyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         color: T.tertiary(context),
         borderRadius: BorderRadius.circular(16.0),
