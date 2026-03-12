@@ -85,7 +85,7 @@ class _CourseLoadedContentState extends State<CourseLoadedContent> {
               runSpacing: 4.0,
               children: _course.topics
                   .map(
-                    (topic) => Text(topic.name, style: T.titleMedium(context)),
+                    (topic) => Text(topic, style: T.titleMedium(context)),
                   )
                   .toList(),
             ),

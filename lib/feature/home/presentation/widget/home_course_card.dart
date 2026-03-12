@@ -46,7 +46,7 @@ class HomeCourseCard extends StatelessWidget {
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => Text(
-                        course.topics[index].name,
+                        course.topics[index],
                         style: T.bodyMedium(context),
                       ),
                       separatorBuilder: (_, _) => const SizedBox(width: 4.0),
