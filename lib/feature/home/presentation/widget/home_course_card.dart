@@ -16,9 +16,7 @@ class HomeCourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(
-          CoursePage.fullRoute(parent: '', id: course.id!),
-        );
+        context.push(CoursePage.fullRoute(parent: '', id: course.id!));
       },
       child: EasyCard(
         child: Row(
@@ -47,8 +45,10 @@ class HomeCourseCard extends StatelessWidget {
                     height: 20.0,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) =>
-                          Text(course.topics[index], style: T.bodyMedium(context)),
+                      itemBuilder: (context, index) => Text(
+                        course.topics[index].name,
+                        style: T.bodyMedium(context),
+                      ),
                       separatorBuilder: (_, _) => const SizedBox(width: 4.0),
                       itemCount: course.topics.length,
                     ),

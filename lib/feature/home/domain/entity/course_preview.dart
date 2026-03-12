@@ -1,3 +1,4 @@
+import 'package:easy_knowledge/feature/course/domain/entity/topic.dart';
 import 'package:equatable/equatable.dart';
 
 class CoursePreview extends Equatable {
@@ -12,7 +13,7 @@ class CoursePreview extends Equatable {
   final String? id;
   final String coverUrl;
   final String name;
-  final List<String> topics;
+  final List<Topic> topics;
   final double rating;
 
   @override

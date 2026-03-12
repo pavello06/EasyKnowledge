@@ -16,12 +16,17 @@ class CourseRepositoryImpl implements CourseRepository {
         coverUrl:
             'https://yt3.ggpht.com/z__RDfyYYg8jN9i29wfdLZ0gFryAceRZn-zDycqvHGNUmke6QM3vtZx_wR_3xcZFtX6FACWiug=s88-c-k-c0x00ffffff-no-rj',
         name: 'Course1',
-        topics: [Topic(id: '0', name: '#topic1'), Topic(id: '1', name: '#topic2'), Topic(id: '2', name: '#topic3')],
+        topics: [
+          Topic(id: '0', name: '#topic1'),
+          Topic(id: '1', name: '#topic2'),
+          Topic(id: '2', name: '#topic3'),
+        ],
         rating: 4.3,
         publishedAt: DateTime.now(),
         updatedAt: DateTime.now(),
         duration: 0,
-        introUrl: 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+        introUrl:
+            'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
         description: 'Lorem ipsum.',
         lessons: [
           LessonPreview(
