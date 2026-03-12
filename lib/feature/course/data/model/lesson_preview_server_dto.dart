@@ -1,30 +1,25 @@
 import 'package:easy_knowledge/feature/lesson/data/model/lesson_element_server_dto.dart';
 
-class LessonServerDto {
-  LessonServerDto({
+class LessonPreviewServerDto {
+  LessonPreviewServerDto({
     this.id,
     required this.coverUrl,
     required this.name,
     required this.firstTextElement,
-    required this.elements,
   });
 
   final String? id;
   final String coverUrl;
   final String name;
   final LessonElementServerDto firstTextElement;
-  final List<LessonElementServerDto> elements;
 
-  factory LessonServerDto.fromJson(Map<String, dynamic> json) =>
-      LessonServerDto(
+  factory LessonPreviewServerDto.fromJson(Map<String, dynamic> json) =>
+      LessonPreviewServerDto(
         id: json['id'] as String?,
         coverUrl: json['coverUrl'] as String,
         name: json['name'] as String,
-        firstTextElement: LessonElementServerDto.fromJson(json['firstTextElement']),
-        elements: List<LessonElementServerDto>.from(
-          (json['elements'] as List).map(
-            (e) => LessonElementServerDto.fromJson(e as Map<String, dynamic>),
-          ),
+        firstTextElement: LessonElementServerDto.fromJson(
+          json['firstTextElement'],
         ),
       );
 
@@ -33,6 +28,5 @@ class LessonServerDto {
     'coverUrl': coverUrl,
     'name': name,
     'firstTextElement': firstTextElement.toJson(),
-    'elements': elements.map((e) => e.toJson()).toList(),
   };
 }
