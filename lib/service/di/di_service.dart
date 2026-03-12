@@ -12,7 +12,7 @@ import 'package:easy_knowledge/feature/lesson/domain/usecase/get_lesson.dart';
 import 'package:easy_knowledge/feature/lesson/presentation/bloc/lesson_cubit.dart';
 import 'package:get_it/get_it.dart';
 
-abstract class DI {
+abstract class DIService {
   static final getIt = GetIt.instance;
 
   static Future<void> init() async {

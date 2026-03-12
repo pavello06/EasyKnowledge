@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "490466120061",
+    "project_id": "easyknowledge-6a1a3",
+    "storage_bucket": "easyknowledge-6a1a3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490466120061:android:95ab5fcf7bbbcad28ebc14",
+        "android_client_info": {
+          "package_name": "com.example.easy_knowledge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfXd5N_aTgVBqs24h_chkzNNsX3o4GjIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

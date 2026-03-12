@@ -4,7 +4,7 @@ import 'package:easy_knowledge/feature/home/presentation/bloc/home_cubit.dart';
 import 'package:easy_knowledge/feature/home/presentation/page/home_page.dart';
 import 'package:easy_knowledge/feature/lesson/presentation/bloc/lesson_cubit.dart';
 import 'package:easy_knowledge/feature/lesson/presentation/page/lesson_page.dart';
-import 'package:easy_knowledge/service/di/get_it.dart';
+import 'package:easy_knowledge/service/di/di_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,7 +14,7 @@ final router = GoRouter(
       path: HomePage.route,
       builder: (context, state) {
         return BlocProvider<HomeCubit>.value(
-          value: DI.getIt(),
+          value: DIService.getIt(),
           child: const HomePage(),
         );
       },
@@ -26,7 +26,7 @@ final router = GoRouter(
             final currentRoute = state.path!;
 
             return BlocProvider<CourseCubit>.value(
-              value: DI.getIt(param1: id),
+              value: DIService.getIt(param1: id),
               child: CoursePage(currentRoute: currentRoute, id: id),
             );
           },
@@ -38,7 +38,7 @@ final router = GoRouter(
                 final currentRoute = state.path!;
 
                 return BlocProvider<LessonCubit>.value(
-                  value: DI.getIt(param1: id),
+                  value: DIService.getIt(param1: id),
                   child: LessonPage(currentRoute: currentRoute, id: id),
                 );
               },
